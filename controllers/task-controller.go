@@ -12,6 +12,13 @@ type TasksData struct {
 	cancelMap map[string]context.CancelFunc
 }
 
+type ImplementsTask interface {
+	AddTask()
+	ManageTask(*structs.Task, context.Context)
+	DeleteTask()
+	ListTasks()
+}
+
 func GetNewTasks() *TasksData {
 	return &TasksData{
 		tasks:     make(map[string]*structs.Task),
